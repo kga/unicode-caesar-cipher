@@ -10,38 +10,26 @@ function App() {
 
   const [shiftNum, setShiftNum] = useState(1);
   const [question, setQuestion] = useState(q);
-  const [encryptedQuestion, setEncryptedQuestion] = useState(
-    encrypt(shiftNum, question)
-  );
-
-  const handleShiftNumChange = (shiftNum: number) => {
-    setEncryptedQuestion(encrypt(shiftNum, question));
-    return shiftNum;
-  };
-
-  const handleQuestionChange = (question: string) => {
-    setEncryptedQuestion(encrypt(shiftNum, question));
-    return question;
-  };
 
   return (
     <>
       <input
         type="number"
-        onChange={(e) => {
-          setShiftNum(handleShiftNumChange(Number(e.target.value)));
-        }}
+        onChange={(e) => setShiftNum(Number(e.target.value))}
         value={shiftNum}
       />
       <input
         type="text"
-        onChange={(e) => {
-          setQuestion(handleQuestionChange(e.target.value));
-        }}
+        onChange={(e) => setQuestion(e.target.value)}
         value={question}
         size={30}
       />
-      <input type="text" value={encryptedQuestion} size={30} readOnly={true} />
+      <input
+        type="text"
+        value={encrypt(shiftNum, question)}
+        size={30}
+        readOnly={true}
+      />
     </>
   );
 }
