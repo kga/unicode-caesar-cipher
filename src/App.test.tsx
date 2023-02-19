@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import App from "./App";
 
-test("renders default question", () => {
+test("renders question", () => {
   render(<App />);
 
   const shift = screen.getByDisplayValue<HTMLInputElement>(1);
